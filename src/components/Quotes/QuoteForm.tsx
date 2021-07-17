@@ -1,6 +1,7 @@
 import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import styled from 'styled-components';
+import { LoadingSpinner } from '../UI';
 
 export const QuoteForm: FC<PropsType> = ({ isLoading, onAddQuote }) => {
     const [values, setValues] = useState<typeof initialValues>(initialValues);
@@ -39,7 +40,9 @@ export const QuoteForm: FC<PropsType> = ({ isLoading, onAddQuote }) => {
         <Wrapper>
             <Form onSubmit={submitFormHandler}>
                 {isLoading && (
-                    <div className="Loading">{/* <LoadingSpinner /> */}</div>
+                    <div className="Loading">
+                        <LoadingSpinner />
+                    </div>
                 )}
 
                 <div className="Control">
