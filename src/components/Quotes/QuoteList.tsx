@@ -24,7 +24,15 @@ export const QuoteList: FC<PropsType> = ({ data }) => {
     const queryParams = new URLSearchParams(location.search);
     const isSortingAscending = queryParams.get('sort') === 'asc';
     const sortingHandler = () => {
-        history.push(`/quotes?sort=${isSortingAscending ? 'desc' : 'asc'}`);
+        history.push(
+            `${location.pathname}?sort=${isSortingAscending ? 'desc' : 'asc'}`
+        );
+
+        // alternative
+        // history.push({
+        //     pathname: location.pathname,
+        //     search: `?sort=${isSortingAscending ? 'desc' : 'asc'}`,
+        // });
     };
     const sortedQuotes = sortQuotes(data, isSortingAscending);
 
