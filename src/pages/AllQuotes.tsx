@@ -1,5 +1,7 @@
 import { FC } from 'react';
+import { QuoteList } from '../components';
+import { DUMMY_DATA } from '../data';
 
 export const AllQuotes: FC = () => {
-    return <div>this is all quotes</div>;
+    return <QuoteList data={DUMMY_DATA} />;
 };

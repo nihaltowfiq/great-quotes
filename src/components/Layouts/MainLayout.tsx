@@ -7,7 +7,7 @@ export const MainLayout: FC = ({ children }) => {
         <Fragment>
             <Header />
             <main>
-                <Container>{children}</Container>
+                <Container className="mt-2">{children}</Container>
             </main>
         </Fragment>
     );

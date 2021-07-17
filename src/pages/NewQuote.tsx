@@ -1,5 +1,9 @@
 import { FC } from 'react';
+import { QuoteForm } from '../components';
 
 export const NewQuote: FC = () => {
-    return <div>this is new quote!</div>;
+    const handleAddQuote = (quote: { author: string; text: string }) => {
+        console.log(quote);
+    };
+    return <QuoteForm isLoading={false} onAddQuote={handleAddQuote} />;
 };

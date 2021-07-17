@@ -37,6 +37,7 @@ export const Header: FC = () => {
 const Wrapper = styled.header`
     width: 100%;
     padding: 0.675rem 0;
+    box-shadow: 0px 0px 50px 10px rgba(250, 215, 70, 0.75);
 `;
 const Inner = styled.div`
     display: flex;
@@ -47,6 +48,7 @@ const Navigation = styled.nav`
     ul {
         display: flex;
         margin: 0;
+
         li {
             list-style: none;
             margin-left: 1rem;
@@ -54,11 +56,16 @@ const Navigation = styled.nav`
             a {
                 text-decoration: none;
                 padding: 0.5rem;
-                color: var(--dark);
+                color: var(--secondary);
                 font-size: 1rem;
+
+                &:hover {
+                    color: var(--dark);
+                }
             }
             .active {
-                border-bottom: 3px solid var(--primary);
+                color: var(--dark);
+                border-bottom: 4px solid var(--primary);
             }
         }
     }
