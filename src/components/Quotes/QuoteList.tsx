@@ -11,9 +11,9 @@ const sortQuotes = (
 ): typeof DUMMY_DATA => {
     return quotes.sort((quoteA, quoteB) => {
         if (ascending) {
-            return quoteA.id > quoteB.id ? 1 : -1;
-        } else {
             return quoteA.id < quoteB.id ? 1 : -1;
+        } else {
+            return quoteA.id > quoteB.id ? 1 : -1;
         }
     });
 };
@@ -27,7 +27,6 @@ export const QuoteList: FC<PropsType> = ({ data }) => {
         history.push(
             `${location.pathname}?sort=${isSortingAscending ? 'desc' : 'asc'}`
         );
-
         // alternative
         // history.push({
         //     pathname: location.pathname,

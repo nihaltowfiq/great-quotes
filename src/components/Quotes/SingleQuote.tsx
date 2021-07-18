@@ -18,7 +18,7 @@ interface PropsType {
 
 const Wrapper = styled.figure`
     background-color: var(--primary);
-    color: white;
+    color: var(--white);
     border-radius: 6px;
     padding: 3rem;
     margin: 3rem auto;
@@ -32,6 +32,6 @@ const Wrapper = styled.figure`
         font-style: italic;
         font-size: 1.5rem;
         text-align: right;
-        color: var(--secondary);
+        color: var(--warning);
     }
 `;

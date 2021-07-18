@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Container } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Header: FC = () => {
@@ -9,7 +9,9 @@ export const Header: FC = () => {
             <Container>
                 <Inner>
                     <div className="Logo">
-                        <h2>Great Quotes</h2>
+                        <Link to="/">
+                            <h2>Great Quotes</h2>
+                        </Link>
                     </div>
                     <Navigation>
                         <ul>
@@ -43,6 +45,13 @@ const Inner = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .Logo {
+        a {
+            text-decoration: none;
+            color: var(--dark);
+        }
+    }
 `;
 const Navigation = styled.nav`
     ul {

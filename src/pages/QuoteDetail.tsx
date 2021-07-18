@@ -1,5 +1,6 @@
 import { FC, Fragment } from 'react';
-import { Link, Route, useParams, useRouteMatch } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { Route, useHistory, useParams, useRouteMatch } from 'react-router-dom';
 import { SingleQuote } from '../components';
 import { DUMMY_DATA } from '../data';
 import { Comments } from './Comments';
@@ -11,9 +12,9 @@ const getDetail = (quoteID: string) => {
 
 export const QuoteDetail: FC = () => {
     const { quoteId } = useParams<{ quoteId?: string }>();
-    const match = useRouteMatch();
+    const { path, url } = useRouteMatch();
 
-    console.log(match);
+    console.log({ path }, { url });
 
     if (quoteId) {
         const data = getDetail(quoteId);
@@ -22,13 +23,11 @@ export const QuoteDetail: FC = () => {
                 <Fragment>
                     <SingleQuote data={data} />
                     <Route
-                        path={`/quotes/${quoteId}`}
-                        render={() => <LoadComment quoteId={quoteId} />}
+                        exact
+                        path={`${url}`}
+                        render={() => <LoadComment path={`${url}/comments`} />}
                     />
-                    <Route
-                        path={`${match.path}/comments`}
-                        component={Comments}
-                    />
+                    <Route path={`${path}/comments`} component={Comments} />
                 </Fragment>
             );
         }
@@ -41,8 +40,18 @@ export const QuoteDetail: FC = () => {
     return null;
 };
 
-const LoadComment: FC<{ quoteId: string }> = ({ quoteId }) => (
-    <div className="text-center mx-auto">
-        <Link to={`/quotes/${quoteId}/comments`}>Load Comments...</Link>
-    </div>
-);
+const LoadComment: FC<{ path: string }> = ({ path }) => {
+    const history = useHistory();
+    return (
+        <div className="text-center mx-auto">
+            <Button
+                size="lg"
+                variant="warning"
+                className="font-weight-semibold"
+                onClick={() => history.push(path)}
+            >
+                Load Comments...
+            </Button>
+        </div>
+    );
+};

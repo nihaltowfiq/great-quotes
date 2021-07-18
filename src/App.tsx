@@ -9,7 +9,7 @@ const App: FC = () => {
             <Switch>
                 <Redirect exact from="/" to="/quotes" />
                 <Route exact path="/quotes" component={AllQuotes} />
-                <Route exact path="/quotes/:quoteId" component={QuoteDetail} />
+                <Route path="/quotes/:quoteId" component={QuoteDetail} />
                 <Route path="/new-quote" component={NewQuote} />
                 <Route path="*" component={NotFound} />
             </Switch>

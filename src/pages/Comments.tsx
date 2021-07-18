@@ -1,7 +1,21 @@
 import { FC } from 'react';
-import { useParams } from 'react-router';
+import { Button } from 'react-bootstrap';
+import styled from 'styled-components';
 
 export const Comments: FC = () => {
-    const { quoteId } = useParams<{ quoteId?: string }>();
-    return <div>Comments {quoteId}</div>;
+    return (
+        <Wrapper>
+            <h3>User Comments</h3>
+            <Button size="lg" className="my-2">
+                Add a Comment
+            </Button>
+            <p>Comments</p>
+        </Wrapper>
+    );
 };
+
+const Wrapper = styled.div`
+    width: 40rem;
+    margin: auto;
+    text-align: center;
+`;
