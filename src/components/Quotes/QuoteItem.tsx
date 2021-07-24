@@ -37,10 +37,10 @@ const Item = styled.li`
     padding: 1rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 6px;
-    background-color: #c2e7f0;
+    background-color: var(--lightPrimary);
 
     &:last-of-type {
         border-bottom: none;

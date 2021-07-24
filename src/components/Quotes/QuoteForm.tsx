@@ -104,7 +104,7 @@ const Wrapper = styled(Card)`
     width: 40rem;
     margin: 0 auto;
     padding: 1rem;
-    background-color: #c2e7f0;
+    background-color: var(--lightPrimary);
 `;
 const Form = styled.form`
     position: relative;

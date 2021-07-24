@@ -1,4 +1,6 @@
-@import './scss/app.scss';
+@import './scss/variables';
+@import './scss/root';
+@import './scss/bootstrap';
 
 * {
     margin: 0;
@@ -6,7 +8,39 @@
 }
 
 body {
-    font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-        'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     font-weight: 600;
+}
+
+.font-weight-semibold {
+    font-weight: 600 !important;
+}
+
+.centered {
+    margin: 3rem auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.focused {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+}
+
+.Button {
+    text-decoration: none;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 4px;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+        opacity: 0.9;
+        color: white;
+        text-decoration: none;
+    }
 }
