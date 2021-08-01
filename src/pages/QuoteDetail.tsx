@@ -1,35 +1,44 @@
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useEffect } from 'react';
 import { Route, useParams, useRouteMatch } from 'react-router-dom';
-import { LoadComment, SingleQuote } from '../components';
-import { DUMMY_DATA } from '../data';
+import { LoadComment, LoadingSpinner, SingleQuote } from '../components';
+import { getSingleQuote, useHttp } from '../libs';
 import { Comments } from './Comments';
-
-const getDetail = (quoteID: string) => {
-    const data = DUMMY_DATA.find(({ id }) => parseInt(quoteID) === id);
-    return data;
-};
 
 export const QuoteDetail: FC = () => {
     const { quoteId } = useParams<{ quoteId?: string }>();
     const { path, url } = useRouteMatch();
+    const { sendRequest, data, error, status } = useHttp(getSingleQuote);
 
-    if (quoteId) {
-        const data = getDetail(quoteId);
-        if (data) {
-            return (
-                <Fragment>
-                    <SingleQuote data={data} />
-                    <Route
-                        exact
-                        path={`${url}`}
-                        render={() => <LoadComment path={`${url}/comments`} />}
-                    />
-                    <Route path={`${path}/comments`} component={Comments} />
-                </Fragment>
-            );
-        }
+    useEffect(() => {
+        sendRequest(quoteId);
+    }, [sendRequest, quoteId]);
+
+    if (status === 'pending') {
+        return (
+            <div className="centered">
+                <LoadingSpinner />
+            </div>
+        );
+    }
+    if (error) {
+        return <p className="centered focused">{error}</p>;
+    }
+    if (!data?.text) {
+        return (
+            <h3 className="mt-5 text-danger text-center">
+                Sorry! quote not found.
+            </h3>
+        );
     }
     return (
-        <h3 className="mt-5 text-danger text-center">Sorry! data not found.</h3>
+        <Fragment>
+            <SingleQuote data={data} />
+            <Route
+                exact
+                path={url}
+                render={() => <LoadComment path={`${url}/comments`} />}
+            />
+            <Route path={`${path}/comments`} component={Comments} />
+        </Fragment>
     );
 };

@@ -22,5 +22,6 @@ export const AllQuotes: FC = () => {
     if (status === 'completed' && (!data || data.length === 0)) {
         return <NoQuotesFound />;
     }
+
     return <QuoteList data={data} />;
 };

@@ -1,7 +1,7 @@
 const FIREBASE_DOMAIN =
     'https://database-for-projects-f2951-default-rtdb.firebaseio.com/great-quotes';
 
-export async function getAllQuotes() {
+export const getAllQuotes = async () => {
     const response = await fetch(`${FIREBASE_DOMAIN}/quotes.json`);
     const data = await response.json();
 
@@ -21,9 +21,9 @@ export async function getAllQuotes() {
     }
 
     return transformedQuotes;
-}
+};
 
-export async function getSingleQuote(quoteId: any) {
+export const getSingleQuote = async (quoteId: string) => {
     const response = await fetch(`${FIREBASE_DOMAIN}/quotes/${quoteId}.json`);
     const data = await response.json();
 
@@ -37,9 +37,9 @@ export async function getSingleQuote(quoteId: any) {
     };
 
     return loadedQuote;
-}
+};
 
-export async function addQuote(quoteData: any) {
+export const addQuote = async (quoteData: any) => {
     const response = await fetch(`${FIREBASE_DOMAIN}/quotes.json`, {
         method: 'POST',
         body: JSON.stringify(quoteData),
@@ -54,9 +54,9 @@ export async function addQuote(quoteData: any) {
     }
 
     return null;
-}
+};
 
-export async function addComment(requestData: any) {
+export const addComment = async (requestData: any) => {
     const response = await fetch(
         `${FIREBASE_DOMAIN}/comments/${requestData.quoteId}.json`,
         {
@@ -74,9 +74,9 @@ export async function addComment(requestData: any) {
     }
 
     return { commentId: data.name };
-}
+};
 
-export async function getAllComments(quoteId: any) {
+export const getAllComments = async (quoteId: string) => {
     const response = await fetch(`${FIREBASE_DOMAIN}/comments/${quoteId}.json`);
 
     const data = await response.json();
@@ -97,4 +97,4 @@ export async function getAllComments(quoteId: any) {
     }
 
     return transformedComments;
-}
+};

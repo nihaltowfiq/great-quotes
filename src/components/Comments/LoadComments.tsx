@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 export const LoadComment: FC<{ path: string }> = ({ path }) => {
     const history = useHistory();
+
     return (
         <div className="text-center mx-auto">
             <Button
