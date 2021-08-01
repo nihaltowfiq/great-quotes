@@ -1,7 +1,6 @@
 import { FC, FormEvent, useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
-import classes from './NewCommentForm.module.css';
 
 export const NewCommentForm: FC<PropsType> = (props) => {
     const commentTextRef = useRef(null);
@@ -15,7 +14,7 @@ export const NewCommentForm: FC<PropsType> = (props) => {
     };
 
     return (
-        <Form className={classes.form} onSubmit={submitFormHandler}>
+        <Form onSubmit={submitFormHandler}>
             <FormControl onSubmit={submitFormHandler}>
                 <label htmlFor="comment">Your Comment</label>
                 <textarea id="comment" rows={5} ref={commentTextRef} />
