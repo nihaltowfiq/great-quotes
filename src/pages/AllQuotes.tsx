@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react';
 import { LoadingSpinner, NoQuotesFound, QuoteList } from '../components';
-import { getAllQuotes, useHttp } from '../libs';
+import { getAllQuotes } from '../libs/api';
+import { useHttp } from '../libs/hooks';
 
 export const AllQuotes: FC = () => {
     const { sendRequest, data, error, status } = useHttp(getAllQuotes, true);

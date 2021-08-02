@@ -61,7 +61,7 @@ export const useHttp = (
 };
 
 type ReturnType = {
-    sendRequest: (payload?: any) => void;
+    sendRequest: (A?: any, B?: any) => void;
     status: any;
     data: any;
     error: any;

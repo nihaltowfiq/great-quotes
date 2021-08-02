@@ -1,7 +1,8 @@
 import { FC, Fragment, useEffect } from 'react';
 import { Route, useParams, useRouteMatch } from 'react-router-dom';
 import { LoadComment, LoadingSpinner, SingleQuote } from '../components';
-import { getSingleQuote, useHttp } from '../libs';
+import { getSingleQuote } from '../libs/api';
+import { useHttp } from '../libs/hooks';
 import { Comments } from './Comments';
 
 export const QuoteDetail: FC = () => {

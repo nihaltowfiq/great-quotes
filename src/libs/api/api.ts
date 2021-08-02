@@ -56,12 +56,12 @@ export const addQuote = async (quoteData: any) => {
     return null;
 };
 
-export const addComment = async (requestData: any) => {
+export const addComment = async (payload: any) => {
     const response = await fetch(
-        `${FIREBASE_DOMAIN}/comments/${requestData.quoteId}.json`,
+        `${FIREBASE_DOMAIN}/comments/${payload.id}.json`,
         {
             method: 'POST',
-            body: JSON.stringify(requestData.commentData),
+            body: JSON.stringify(payload.comment),
             headers: {
                 'Content-Type': 'application/json',
             },

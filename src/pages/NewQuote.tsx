@@ -1,7 +1,8 @@
 import { FC, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { QuoteForm } from '../components';
-import { addQuote, useHttp } from '../libs';
+import { addQuote } from '../libs/api';
+import { useHttp } from '../libs/hooks';
 
 export const NewQuote: FC = () => {
     const history = useHistory();
